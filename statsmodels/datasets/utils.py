@@ -183,8 +183,7 @@ def _open_cache(cache_path):
         # Python 3 build
         import zlib
         data = zlib.decompress(open(cache_path, 'rb').read())
-        # return as bytes object encoded in utf-8 for cross-compat of cached
-        data = cPickle.loads(data).encode('utf-8')
+        data = cPickle.loads(data)
     else:
         data = open(cache_path, 'rb').read().decode('zip')
         data = cPickle.loads(data)
